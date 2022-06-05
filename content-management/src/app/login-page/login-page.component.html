@@ -1,0 +1,34 @@
+<div>
+    <form [formGroup]="login"  (ngSubmit)="onLogin()">
+      <h3 class="">Please sign in</h3>
+  
+      <div class="form-floating mb-2">
+        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" formControlName="email">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="form-floating mb-2">
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="padding: 7px;" formControlName="question">
+          <option selected value="">Choose...</option>
+          <option *ngFor="let ques of Security" value="{{ques}}">{{ques}}</option>
+        </select>
+      </div>
+
+      <div class="form-floating mb-2">
+        <input type="text" class="form-control" id="floatinganswer" placeholder="floatinganswer" formControlName="answer">
+        <label for="floatinganswer">Answer the above security question here</label>
+      </div>
+
+      <div *ngIf="loginError" class="alert alert-danger" role="alert">
+        {{loginError}}
+       </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="login.invalid">Login</button>
+      <button class="w-100 btn btn-lg btn-primary my-2" type="button" routerLink="register">create new account</button>
+
+    </form>
+
+</div>

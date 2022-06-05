@@ -1,0 +1,23 @@
+<app-navbar [loginDetails]="loginDetails" (searchFilter)="onSearch($event)" (sortFilter)="onSort($event)"></app-navbar>
+
+<section>
+    <div class="row m-auto">
+        <div class="col-12 my-3" *ngFor="let blog of blogList | search:query">  
+              <div class="card">
+                <div class="card-header">
+                  {{blog.name}} <span> | </span> {{blog.email}}
+                    <span class="badge badge-info" *ngIf="blog.status === 'approved'">{{blog.status}}</span>
+                    <span class="badge badge-info" style="background-color: orange;" *ngIf="blog.status !== 'approved'">{{blog.status}}</span>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{blog.title}}</h5>
+                  <p class="card-text">{{blog.description.length > 170 ? (blog.description | slice:0:170) + "......" : blog.description}}</p>
+                  <div class="actions"> 
+                  <a id="{{blog.title}}" class="btn btn-link" *ngIf="loginDetails?.role !== 'user'" [routerLink]="['../blog/view', blog._id]">VIEW</a>
+                  <a id="{{blog.title}}" class="btn btn-link" *ngIf="loginDetails?.role !== 'user' && loginDetails.email === blog.email" [routerLink]="['../blog/edit', blog._id]">UPDATE</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+</section>

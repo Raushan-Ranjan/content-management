@@ -1,0 +1,40 @@
+<div>
+    <form [formGroup]="register"  (ngSubmit)="onRegister()">
+      <h3 class="">Create new account </h3>
+  
+      <div class="form-floating mb-2">
+        <input type="email" class="form-control" id="floatingName" placeholder="Raushan Ranjan" formControlName="name">
+        <label for="floatingInput">Full Name</label>
+      </div>
+
+      <div class="form-floating mb-2">
+        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" formControlName="email">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="form-floating mb-2">
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="padding: 7px;" formControlName="question">
+          <option selected value="">Choose...</option>
+          <option *ngFor="let ques of Security" value="{{ques}}">{{ques}}</option>
+        </select>
+      </div>
+
+      <div class="form-floating mb-2">
+        <input type="text" class="form-control" id="floatinganswer" placeholder="floatinganswer" formControlName="answer">
+        <label for="floatinganswer">Answer the above security question here</label>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+       {{errorMessage}}
+      </div>
+  
+      <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="register.invalid">Create new account</button>
+      <button class="w-100 btn btn-lg btn-primary my-2" type="button" routerLink="">Login</button>
+
+    </form>
+
+</div>

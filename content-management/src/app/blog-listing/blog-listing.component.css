@@ -1,0 +1,18 @@
+section{
+    box-sizing: border-box;
+}
+
+.row{
+    width: 95vw;
+}
+
+.actions{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.badge-info{
+    color: white;
+    background-color: yellowgreen;
+}

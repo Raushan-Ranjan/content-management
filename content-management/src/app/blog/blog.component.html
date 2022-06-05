@@ -1,0 +1,38 @@
+<div class="edit-blog" *ngIf="mode === 'edit' || mode === 'create'">
+    <form [formGroup]="createForm"  (ngSubmit)="onCreateFn()">
+      <h3 class="">{{mode === 'edit' ? 'Edit Blog' : 'Create Blog'}}</h3>
+  
+      <div class="form-floating mb-2">
+        <input type="text" class="form-control" id="floatingEmail" placeholder="name@example.com" formControlName="title">
+        <label for="floatingInput">Title</label>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" formControlName="description" placeholder="enter your blog content here !!!"></textarea>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{errorMessage}}
+       </div>
+  
+      <div class="submit-button">
+      <button class="btn btn-lg btn-primary" style="width:45%" type="submit" [disabled]="createForm.invalid">Save</button>
+      <button class="btn btn-lg btn-primary my-2" style="width:45%" type="button" routerLink="register" (click)="onDiscard()">Discard</button>
+      </div>
+
+    </form>
+
+</div>
+
+
+<div class="card text-center view-card" *ngIf="mode === 'view'">
+  <div class="card-header">
+    {{blog.name}} | {{blog.email}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{blog.title}}</h5>
+    <p class="card-text">{{blog.description}}</p>
+    <a class="btn btn-primary" routerLink="/blog-listing">GO to blog listing</a>
+    <a id="{{blog.title}}" class="btn btn-primary ml-2 approve-blog" *ngIf="loginUser?.role === 'super admin' && blog.status === 'under review'" (click)="onApprove(blog._id,blog)">APPROVE</a>
+    <a class="btn btn-primary delete-blog" *ngIf="onDeleteBlog()" (click)="onDelete(blog._id)">Delete Blog</a>
+  </div>
+</div>

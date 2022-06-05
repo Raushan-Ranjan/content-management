@@ -1,0 +1,26 @@
+<div>
+    <form [formGroup]="permission"  (ngSubmit)="onPermission()">
+      <h3 class="">Give permission to User</h3>
+  
+      <div class="form-floating mb-2">
+        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" formControlName="email">
+        <label for="floatingInput">Email address</label>
+      </div>
+
+      <div class="form-floating mb-2">
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="padding: 7px;" formControlName="role">
+          <option selected value="">Choose...</option>
+          <option value="admin">Admin</option>
+          <option value="super admin">Super Admin</option>
+        </select>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{errorMessage}}
+       </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="permission.invalid">Submit</button>
+      <button class="w-100 btn btn-lg btn-primary my-2" type="button" routerLink="/blog-listing">Cancel</button>
+
+    </form>
+
+</div>
