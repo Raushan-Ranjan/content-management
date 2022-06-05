@@ -1,0 +1,13 @@
+super admin  ---> write/publish/review/delete
+admin        ---> write/save as draft
+reader       ---> only see and read / listing
+
+-------------------------------      Blog API   ----------------------------------------------
+
+create blog   ---> super admin, admin   --> post  -- if super admin -> publish, else -> save as dfaft
+publish       ---> super admin        ----> patch 
+save as draft ---> admin              ----> patch
+getOneBlog   ----> All                ----> Get   -----
+delete       ---->  super admin       ----> delete   -----
+getAllBlog   ---->  All               -----> get   ----
+giveAccess   ---->  Admin             -----> Patch  -----
